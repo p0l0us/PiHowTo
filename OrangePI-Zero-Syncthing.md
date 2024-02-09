@@ -69,6 +69,7 @@ AuthorizedKeysFile  %h/.ssh/authorized_keys
 = Read documentation for details https://www.wireguard.com/install/
 - Assuming you have already wireguard server
 - Install wireguard `sudo apt install wireguard`
+- _Note: if you have RaspberryPI, also install resolvconf `sudo apt install resolvconf`
 - Create private key file
   - If you don't have any, create one `wg genkey | sudo tee /etc/wireguard/private.key`
   - If you have one prepared, store it in the file `sudo nano /etc/wireguard/private.key`
