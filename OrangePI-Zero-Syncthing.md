@@ -151,5 +151,5 @@ sudo systemctl status syncthing@[username].service
 </gui>
 ...
 ```
-- Restart syncthing `sudo systemctl restart syncthing@username.service`
+- Restart syncthing `sudo systemctl restart syncthing@[username].service`
 - Navigate your web browser to Syncthing UI at https://[some ip address]:8384
