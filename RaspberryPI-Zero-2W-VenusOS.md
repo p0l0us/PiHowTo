@@ -20,7 +20,6 @@
   - _ESC navigates to system overlay_
   - _LEFT arrow means back_
   - _RIGHT arrow selects item_
-- [Optional] Change the hostname in `/etc/venus/machine`
     
 # Navigate to Settings, Wi-Fi and connect to the network
 - Use the device IP address in the browser to see the Victron Venus Web UI
