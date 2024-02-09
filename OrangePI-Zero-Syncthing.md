@@ -31,7 +31,14 @@ sudo apt upgrade
 
 _From this moment you don't need monitor anymore since you can connect to the device via SSH and your own username_
 
+# Setup firewall (ufw)
+- Install ufw `sudo apt install ufw`
+- Ensure ssh is allowed `sudo ufw allow ssh`
+- Enable ufw `sudo ufw enable`
+- Check status `sudo ufw status`
+  
 # Install wireguard:
+= Read documentation for details https://www.wireguard.com/install/
 - Assuming you have already wireguard server
 - Install wireguard `sudo apt install wireguard`
 - Create private key file
@@ -74,3 +81,48 @@ sudo ping [server wireguard internal ip]
 _Now you should be able to connect to your device anytime it is connected to the internet via wireguard VPN_
 
 # Install syncthing
+= Read documentation for details https://docs.syncthing.net/intro/getting-started.html
+  or search internet for full howto.
+- Install syncthing...
+```
+sudo apt-get update
+sudo apt-get install syncthing
+```
+- ...Or you can use syncthing repository to get most recent version
+```
+sudo apt-get install apt-transport-https ca-certificates
+curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
+echo "deb https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
+sudo apt-get update
+sudo apt-get install syncthing
+```
+- Set firewall rules
+```
+sudo ufw allow 22000/tcp
+sudo ufw allow 21027/udp
+sudo ufw allow 8384/tcp
+sudo ufw status
+```
+_Note: consider changing the syncthing port `8383` to something else_
+- Start and install syncthing service to run under you user
+```
+sudo systemctl enable syncthing@[username].service
+sudo systemctl start syncthing@[username].service
+```
+- Check status
+```
+sudo systemctl status syncthing@[username].service
+```
+- Edit syncthing config file and set the GUI IP address
+  `/home/[username]/.local/state/syncthing/config.xml`
+  _Note: can be also in `.config/syncthing`_
+```
+...
+<gui enabled="true" tls="false" debugging="false">
+    <address>0.0.0.0:8384</address>
+    ...
+</gui>
+...
+```
+- Restart syncthing `sudo systemctl restart syncthing@username.service`
+- Navigate your web browser to Syncthing UI at https://[some ip address]:8384
