@@ -5,7 +5,7 @@
 - OrangePI Zero 2: Use Debian server image in order to support 256Gb and bigger Micro SSD Cards.
 - OrangePI Zero 3: Use Ubuntu server image.
 - Extract compressed image file
-- Use Balena Etcher or similar tool to create Micro SSD card.
+- Use Balena Etcher or similar tool to create Micro SD card.
 - _Note: Etcher may require admin rights._
 
 # Setup network
