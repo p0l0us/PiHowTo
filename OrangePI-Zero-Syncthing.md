@@ -1,10 +1,11 @@
-# Use Etcher (or similar tool) and burn to SD card.
-- OS Images
+# Burn OS image the the SD card
+- Select OS Image from
   - OrangePI Zero 2: http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-Zero-2.html
   - OrangePI Zero 3: http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-3.html
 - OrangePI Zero 2: Use Debian server image in order to support 256Gb and bigger Micro SSD Cards.
 - OrangePI Zero 3: Use Ubuntu server image.
-- Extract image and use Etcher or similar tool to create Micro SSD card.
+- Extract compressed image file
+- Use Balena Etcher or similar tool to create Micro SSD card.
 - _Note: Etcher may require admin rights._
 
 # Setup network
