@@ -20,8 +20,12 @@ sudo su [username]
 - remove `orangepi` user `sudo deluser --remove-home orangepi`
 - run `sudo nmtui`
   - connect the device to the wifi (or use wired)
-  - set a meaningful device host name 
+  - set a meaningful device host name
 - `ifconfig` to see current devices ip address.
+- make sure the hostname is also in `/etc/hosts`
+```
+127.0.0.1 [hostname]
+```
 - update the system
 ```
 sudo apt update
@@ -36,6 +40,29 @@ _From this moment you don't need monitor anymore since you can connect to the de
 - Ensure ssh is allowed `sudo ufw allow ssh`
 - Enable ufw `sudo ufw enable`
 - Check status `sudo ufw status`
+
+# Create authorized ssh keys
+- Generate your private & public key pair for ssh (eg. Putty-gen)
+- Sign to the server ssh with your account
+- Run following commands
+```
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+nano ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+```
+and paste your generated public key to the `authorized_keys` file.
+- Make sure following is in your `/etc/ssh/sshd_config` file
+```
+HostKeyAlgorithms +ssh-rsa
+PubkeyAcceptedAlgorithms +ssh-rsa
+PubkeyAcceptedKeyTypes=+ssh-rsa
+
+RSAAuthentication yes
+PubkeyAuthentication yes
+AuthorizedKeysFile  %h/.ssh/authorized_keys
+```
+- restart ssh server `/etc/init.d/ssh restart`
   
 # Install wireguard:
 = Read documentation for details https://www.wireguard.com/install/
