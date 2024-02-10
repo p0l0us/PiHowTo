@@ -155,3 +155,16 @@ sudo systemctl status syncthing@[username].service
 ```
 - Restart syncthing `sudo systemctl restart syncthing@[username].service`
 - Navigate your web browser to Syncthing UI at https://[some ip address]:8384
+ 
+# Other ideas
+## Comitup project
+- Unstable, I didn't make it work yet
+- I should give it a try later.
+
+## Webmin
+- quite slow
+- doesn't allow set wifi
+
+## Cockpit
+- less feature then webmin
+- doesn't allow set wifi
