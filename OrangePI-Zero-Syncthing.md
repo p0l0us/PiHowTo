@@ -158,13 +158,20 @@ sudo systemctl status syncthing@[username].service
  
 # Other ideas
 ## Comitup project
+- https://github.com/davesteele/comitup
 - Unstable, I didn't make it work yet
-- I should give it a try later.
+- I should give it a try later with clean installation.
+- Maybe it has issues with latest bookworm debian ?
+- Author is rewriting it... 
 
 ## Webmin
-- quite slow
-- doesn't allow set wifi
+- https://webmin.com/
+- Easy installation
+- Quite slow
+- Doesn't allow set wifi
 
 ## Cockpit
-- less feature then webmin
-- doesn't allow set wifi
+- https://cockpit-project.org/
+- Easy installation
+- Less feature then webmin
+- Doesn't allow set wifi
