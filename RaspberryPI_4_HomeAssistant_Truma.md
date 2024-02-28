@@ -2,8 +2,10 @@
 - standard way for RPI using the RaspberryPI Imager
 - Installed wireguard and syncthing according to OrangePI guide https://github.com/p0l0us/PiHowTo/blob/main/OrangePI-Zero-Syncthing.md
 - `apt update && apt upgrade`
+- Truma CP plus version is 03.00.01
+  
 # Truma LIN and MQTT
-- Note: it didn't work for me. The most likely I need truma inetbox. Original idea was that it will communicate with CP plus inet ready, but...
+- Note: it didn't work for me yet.
 - Connect hardware as shown here: https://github.com/danielfett/inetbox.py/tree/master
 - Ensure your user is in dialout group (`sudo adduser [USERNAME] dialout`)
 - Install Mosquitto MQTT service `sudo apt install mosquitto mosquitto-clients -y`
@@ -35,6 +37,7 @@ systemctl enable miqro_truma
 systemctl start miqro_truma
 ```
 # EspHome approach
+- Note: it didn't work for me yet.
 - Project home: https://github.com/Fabian-Schmidt/esphome-truma_inetbox
 ## Install Home assistant
 - Install Home Assistant to raspberrypi using the RaspberryPI Imager
