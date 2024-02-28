@@ -68,7 +68,8 @@ systemctl start miqro_truma
 mosquitto_pub -t 'service/truma/set/target_temp_room' -m '18'; mosquitto_pub -t 'service/truma/set/heating_mode' -m 'eco'
 ```
 # EspHome approach
-- STATUS: Didn't connect to UART yet.
+- STATUS: It works !
+  The main trick was resetting the CP panel and wait looong until it pairs
 - Project home: https://github.com/Fabian-Schmidt/esphome-truma_inetbox
 ## Install Home assistant
 - Install Home Assistant to raspberrypi using the RaspberryPI Imager
