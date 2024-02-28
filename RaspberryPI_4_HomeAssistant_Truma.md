@@ -16,8 +16,8 @@ BYPASS_OS_CHECK=true apt install ./homeassistant-supervised.deb
 ```
 
 # Truma LIN and MQTT
-- Note: it doesn't work for me yet. I'm able to connect via MQTT broker and control the temperature. \
-  But I didn't connect this MTQQ to Home assistant yet
+- STAUS: it doesn't work for me yet. I'm able to connect via MQTT broker and control the temperature. \
+  But I didn't connect MQTT to Home assistant yet
 - Connect hardware as shown here: https://github.com/danielfett/inetbox.py/tree/master
 - Ensure your user is in dialout group (`sudo adduser [USERNAME] dialout`)
 - Install Mosquitto MQTT service `sudo apt install mosquitto mosquitto-clients -y`
@@ -68,7 +68,7 @@ systemctl start miqro_truma
 mosquitto_pub -t 'service/truma/set/target_temp_room' -m '18'; mosquitto_pub -t 'service/truma/set/heating_mode' -m 'eco'
 ```
 # EspHome approach
-- Note: it didn't work for me yet.
+- STATUS: Didn't connect to UART yet.
 - Project home: https://github.com/Fabian-Schmidt/esphome-truma_inetbox
 ## Install Home assistant
 - Install Home Assistant to raspberrypi using the RaspberryPI Imager
