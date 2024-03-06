@@ -108,6 +108,91 @@ api:
     key: "[HERE IS THE KEY]"
 ```
 - Paste to the Esp Home config editor one of following examples: https://github.com/Fabian-Schmidt/esphome-truma_inetbox/tree/main/examples
+  
+<details>
+  <summary>My config template:</summary>
+  
+```
+esphome:
+  name: "truma-combi"
+  friendly_name: "Truma Combi 6L"
+
+external_components:
+  - source: github://Fabian-Schmidt/esphome-truma_inetbox
+
+esp32:
+  board: esp32dev
+
+logger:
+  #level: VERBOSE
+  #level: DEBUG
+  level: INFO
+
+api:
+  encryption:
+    key: "[Paste encryption key here]"
+
+ota:
+  password: "[OTA password here]"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    ssid: "Truma Hotspot"
+    password: "!secret wifi_password"
+  
+uart:
+  - id: lin_uart_bus
+    tx_pin: 17
+    rx_pin: 16
+    baud_rate: 9600
+    data_bits: 8
+    parity: NONE
+    stop_bits: 2
+
+
+climate:
+  - platform: truma_inetbox
+    name: "Room"
+    type: ROOM
+  - platform: truma_inetbox
+    name: "Water"
+    type: WATER
+
+binary_sensor:
+  - platform: truma_inetbox
+    name: "CP Plus alive"
+    type: CP_PLUS_CONNECTED
+  - platform: truma_inetbox
+    name: "Heater has error"
+    type: HEATER_HAS_ERROR
+
+sensor:
+  - platform: truma_inetbox
+    name: "Current Room Temperature"
+    type: CURRENT_ROOM_TEMPERATURE
+  - platform: truma_inetbox
+    name: "Current Water Temperature"
+    type: CURRENT_WATER_TEMPERATURE
+
+select:
+  - platform: truma_inetbox
+    name: "Fan Mode"
+    type: HEATER_FAN_MODE_COMBI
+
+truma_inetbox:
+  uart_id: lin_uart_bus
+
+web_server:
+  port: 80
+  local: true
+  version: 2
+  include_internal: true
+```
+
+</details>
+
 - Change the name
 ```
 esphome:
