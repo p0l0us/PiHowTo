@@ -16,8 +16,8 @@ BYPASS_OS_CHECK=true apt install ./homeassistant-supervised.deb
 ```
 
 # Truma LIN and MQTT
-- STAUS: it doesn't work for me yet. I'm able to connect via MQTT broker and control the temperature. \
-  But I didn't connect MQTT to Home assistant yet
+- STAUS: I'm able to connect via MQTT broker and control the temperature. \
+  But I didn't connect MQTT to Home assistant.
 - Connect hardware as shown here: https://github.com/danielfett/inetbox.py/tree/master
 - Ensure your user is in dialout group (`sudo adduser [USERNAME] dialout`)
 - Install Mosquitto MQTT service `sudo apt install mosquitto mosquitto-clients -y`
