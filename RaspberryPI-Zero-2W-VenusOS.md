@@ -33,8 +33,76 @@
   - Remount `/` as writable: `mount -o remount,rw /`
   - Enable headless mode: `mv /etc/venus/headless.off /etc/venus/headless`
   - Reboot
+    
 # Install wireguard
--  Follow instructions: https://community.victronenergy.com/articles/211164/howto-venus-os-setting-up-wireguard.html 
+-  Follow instructions: https://community.victronenergy.com/articles/211164/howto-venus-os-setting-up-wireguard.html
+- Create wireguard installation script `/data/wireguard/install.sh`:
+```
+#!/bin/bash
+
+running_file_name=$(basename "$0")
+echo "-"
+echo "[Running '$running_file_name']"
+
+if [ -x "$(command -v wg)" ] ; then
+  echo "Wireguard already installed"
+  exit
+fi
+
+if [ ! -x "$(command -v install)" ] ; then
+  echo "command install not found, checking internet connection"
+  curl --output /dev/null --silent --retry 15 --retry-max-time 120 --retry-connrefused -w "\n" "8.8.8.8" #wait for internet connection
+  exit_status=$?
+  if [ $exit_status -ne 0 ]; then
+    echo "Connection to internet failed !"
+    exit 100
+  fi
+  echo "Installing coreutils"
+  opkg update
+  opkg install coreutils
+fi
+
+if [ -x "$(command -v install)" ] ; then
+  echo "installing wireguard"
+  if [ ! -d "wireguard-tools" ] ; then
+    echo "Cloning wireguard git repository"
+    git clone https://git.zx2c4.com/wireguard-tools
+  else
+    echo "Wireguard git repository already exists"
+  fi
+  make -C wireguard-tools/src -j$(nproc)
+  sudo make -C wireguard-tools/src install
+  echo "Wireguard installed"
+else
+  echo "Install command not found, installation failed !"
+fi
+```
+- And make it executable `chmod 755 /data/wireguard/install.sh`
+- Add wireguard install script to `/data/rc.local` file. Mine looks like:
+```
+#!/bin/bash
+
+source /data/wireguard/install.sh
+```
+- And make `/data/rc.local` executable if it's not: `chmod 755 /data/rc.local`
+- Create `/data/wireguard/wg0.conf` according to your needs like:
+```
+[Interface]
+PrivateKey = <enter client private key here>
+
+[Peer]
+PublicKey = <enter server public key here>
+AllowedIPs = <server network address>/24
+Endpoint = <enter your wiregaurd server pulbic IP address>
+PersistentKeepalive = 15
+```
+- Initialize wg0 interface with your ip address:
+```
+ip link add dev wg0 type wireguard
+ip address add dev wg0 <client ip address>/24
+wg setconf wg0 /data/wireguard/wg0.conf
+ip link set up dev wg0
+```
 
 # Install dbus-serialbattery driver
 - Install the CAN module firstly (see bellow)
