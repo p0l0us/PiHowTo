@@ -159,7 +159,14 @@ cansend can0 512#aabbcc00dd
 ## Waveshare RS485 CAN pHAT
 - https://www.waveshare.com/wiki/RS485_CAN_HAT
 - Connect the HAT to your rpi
-- To `all` section of the `/u-boot/config.txt` add MCP2515 overlay `dtoverlay=mcp2515-can0,oscillator=8000000,interrupt=25,spimaxfrequency=1000000` and make sure `dtparam=spi=on` is already there.
+- To `all` section of the `/u-boot/config.txt` add MCP2515 overlay and make sure `dtparam=spi=on` is already there.
+```
+[all]
+dtparam=spi=on
+dtoverlay=mcp2515-can0,oscillator=12000000,interrupt=25,spimaxfrequency=2000000
+# or
+# dtoverlay=mcp2515-can0,oscillator=8000000,interrupt=25,spimaxfrequency=1000000
+```
 - Test can0 (or other interface): 
 ```
 candump can0
