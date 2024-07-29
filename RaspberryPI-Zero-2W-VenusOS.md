@@ -128,6 +128,14 @@ bash /tmp/install.sh
   - Test with candump can0
   - Wire to DalyBMS
 
+## Setup dbus-serialbattery to use can0. 
+  - Make sure your CAN port works and is available. See section `Install CAN module` if you need any hint.
+  - To file `/data/etc/dbus-serialbattery/config.ini` add `line CAN_PORT = can0`
+  - Reinstall dbus-serial battery drivers to enable CAN venus driver: `/data/etc/dbus-serialbattery/reinstall-local.sh`
+  - Confirm can drivers is listed in the command output
+  - Reboot
+  - See logs:  `tail -F -n 100 /data/log/dbus-canbattery.can0/current | tai64nlocal`
+    
 # Install CAN module
 ## CAN-SPI module MCP2515 with TJA1050
 - Make sure your adapter with TJA1050 support 3.3V VCC provided by RPI https://forums.raspberrypi.com/viewtopic.php?t=141052
@@ -145,18 +153,25 @@ bash /tmp/install.sh
 candump can0
 cansend can0 512#aabbcc00dd
 ```
-- Setup dbus-serialbattery to use can0. 
-  - To file `/data/etc/dbus-serialbattery/config.ini` add `line CAN_PORT = can0`
-  - Reinstall dbus-serial battery drivers to enable CAN venus driver: `/data/etc/dbus-serialbattery/reinstall-local.sh`
-  - Confirm can drivers is listed in the command output
-  - Reboot
-  - See logs:  `tail -F -n 100 /data/log/dbus-canbattery.can0/current | tai64nlocal`
 
+## Waveshare RS485 CAN pHAT
+- https://www.waveshare.com/wiki/RS485_CAN_HAT
+- Connect the HAT to your rpi
+- To `all` section of the `/u-boot/config.txt` add MCP2515 overlay `dtoverlay=mcp2515-can0,oscillator=8000000,interrupt=25,spimaxfrequency=1000000` and make sure `dtparam=spi=on` is already there.
+- Test can0 (or other interface): 
+```
+candump can0
+cansend can0 512#aabbcc00dd
+```
 
-## USB-CAN bus adapter (not tested):
+## USB-CAN bus adapter:
+  _Note: I didn't try with Raspberry PI yet. It works with CerboGX_
 - Connect the adapter to the USB
+  _Note: I'm using two different cheap CAN adapters with Victron CerboGX (one is Canable USB-C other is a MicroUSB). Both works without any configuration._
+- When using more than one USB-CAN adapter, canX port names are assigned randomly, and VenusOS swaps it's settings. To fix this set own udev rules based on CAN adapter serial number or other unique identifier.
+
+## USB options untested:
 - Install package helper script https://github.com/kwindrem/SetupHelper
 - In Venus UI Navigate to Settings -> Package manager and install `VeCanSetup` package
 - _Note: Use main branch if you wish the more recent, but also more unstable version_
-
 
