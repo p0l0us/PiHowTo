@@ -35,7 +35,7 @@
   - Reboot
     
 # Install wireguard
--  Follow instructions: https://community.victronenergy.com/articles/211164/howto-venus-os-setting-up-wireguard.html
+- Follow instructions: https://community.victronenergy.com/articles/211164/howto-venus-os-setting-up-wireguard.html
 - Create wireguard installation script `/data/wireguard/install.sh`:
 ```
 #!/bin/bash
@@ -83,6 +83,7 @@ fi
 #!/bin/bash
 
 source /data/wireguard/install.sh
+source /data/wireguard/run.sh
 ```
 - And make `/data/rc.local` executable if it's not: `chmod 755 /data/rc.local`
 - Create `/data/wireguard/wg0.conf` according to your needs like:
@@ -96,13 +97,14 @@ AllowedIPs = <server network address>/24
 Endpoint = <enter your wiregaurd server pulbic IP address>
 PersistentKeepalive = 15
 ```
-- Initialize wg0 interface with your ip address:
+- Create script `/data/wireguard/run.sh` to initialize wg0 interface with your ip address:
 ```
 ip link add dev wg0 type wireguard
 ip address add dev wg0 <client ip address>/24
 wg setconf wg0 /data/wireguard/wg0.conf
 ip link set up dev wg0
 ```
+- And make the run script readable `chmod 755 /data/wireguard/run.sh`
 
 # Install dbus-serialbattery driver
 - Install the CAN module firstly (see bellow)
