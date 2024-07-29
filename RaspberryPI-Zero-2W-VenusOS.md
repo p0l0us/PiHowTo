@@ -165,9 +165,9 @@ cansend can0 512#aabbcc00dd
 ```
 
 ## USB-CAN bus adapter:
-  _Note: I didn't try with Raspberry PI yet. It works with CerboGX_
+- _Note: I didn't try with Raspberry PI yet. It works with CerboGX_
 - Connect the adapter to the USB
-  _Note: I'm using two different cheap CAN adapters with Victron CerboGX (one is Canable USB-C other is a MicroUSB). Both works without any configuration._
+- _Note: I'm using two different cheap CAN adapters with Victron CerboGX (one is Canable USB-C other is a MicroUSB). Both works without any configuration._
 - When using more than one USB-CAN adapter, canX port names are assigned randomly, and VenusOS swaps it's settings. To fix this set own udev rules based on CAN adapter serial number or other unique identifier.
 
 ## USB options untested:
