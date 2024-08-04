@@ -120,11 +120,8 @@ sudo apt-get install syncthing
 - ...Or you can use syncthing repository to get most recent version
 ```
 sudo apt-get install apt-transport-https ca-certificates
-curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
+curl -s https://syncthing.net/release-key.txt | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/syncthing.gpg
 echo "deb https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
-# 00654A3E should be last 8 chars from the syncthing key which you get by running command
-# sudo apt-key list
-sudo apt-key export 00654A3E | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/syncthing.gpg
 sudo apt-get update
 sudo apt-get install syncthing
 ```
