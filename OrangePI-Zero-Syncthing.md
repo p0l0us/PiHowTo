@@ -143,8 +143,8 @@ sudo systemctl start syncthing@[username].service
 sudo systemctl status syncthing@[username].service
 ```
 - Edit syncthing config file and set the GUI IP address
-  `/home/[username]/.local/state/syncthing/config.xml`
-  _Note: can be also in `.config/syncthing`_
+  `/home/[username]/.config/state/syncthing/config.xml`
+  _Note: can be also in `.local/syncthing`_
 ```
 ...
 <gui enabled="true" tls="false" debugging="false">
