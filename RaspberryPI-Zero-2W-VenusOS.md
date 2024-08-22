@@ -4,22 +4,37 @@
 - Download `venus-image-large-raspberrypi2.wic.gz`. Large contains Red and Signal support.
 - _Note: Etcher may require admin rights._
 
-# Boot RPI
+# Boot RPI and connect to WIFI
 - Insert the sd card to the RPI
 - Connect USB keyboard
 - Connect HDMI monitor
 - Connect USB power cable
-- Setup Wifi connection if ethernet not available
-- Remount `/` as writable: `mount -o remount,rw /`
-- Disable headless mode: `mv /etc/venus/headless /etc/venus/headless.off`
-- Reboot
-- You should see VenusOS UI on the HDMI monitor connected to RPI
-- _Note: use arrows to navigate within the UI:_
-  - _ENTER key means home_
-  - _Spacebar means confirm_
-  - _ESC navigates to system overlay_
-  - _LEFT arrow means back_
-  - _RIGHT arrow selects item_
+- Run `connmanctl` and use following commands to conect to the WIFI:
+```
+scan wifi
+agent on
+
+# this command will list available wifi access points
+services 
+
+# fill with selected wifi_xxxx data.
+# write first part and use TAB key to autofill (bash style)
+connect wifi_.........
+
+# wait approx 30s for the result (connected or fail)
+# if connection fail, try different wifi router (eg. mobile phone)
+```
+- Show Venus UI on the HDMI display
+  - Remount `/` as writable: `mount -o remount,rw /`
+  - Disable headless mode: `mv /etc/venus/headless /etc/venus/headless.off`
+  - Reboot
+  - You should see VenusOS UI on the HDMI monitor connected to RPI
+  - _Note: use arrows to navigate within the UI:_
+    - _ENTER key means home_
+    - _Spacebar means confirm_
+    - _ESC navigates to system overlay_
+    - _LEFT arrow means back_
+    - _RIGHT arrow selects item_
     
 # Navigate to Settings, Wi-Fi and connect to the network
 - Use the device IP address in the browser to see the Victron Venus Web UI
