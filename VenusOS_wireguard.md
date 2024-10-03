@@ -23,7 +23,10 @@ chmod 755 /data/rcS.local
 4. Create installation script `/data/etc/wireguard/install.sh`
 ```
 #!/bin/bash
- 
+
+# Better to delay this job
+sleep 10
+
 running_file_name=$(basename "$0")
 echo "-"
 echo "[Running '$running_file_name']"
@@ -65,7 +68,7 @@ fi
 ```
 #!/bin/bash
 
-bash /data/wireguard/install.sh
+nohup /data/etc/wireguard/install.sh > /dev/null &
 ```
 6. And make sure `/data/rcS.local` is executable
 ```
