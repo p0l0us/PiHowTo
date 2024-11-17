@@ -1,5 +1,5 @@
 # PiHowTo
-Notes how I setup my PI devices.
+My notes how I setup PI devices and CerboGX.
 
 ## RaspberryPI Zero 2W with VenusOS and Wireguard
 - The project should allow me monitoring LiFePo4 batteries with Daly and Jikong (JK) Bms via CAN bus
