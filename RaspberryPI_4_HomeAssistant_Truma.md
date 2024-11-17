@@ -58,6 +58,7 @@ BYPASS_OS_CHECK=true dpkg -i ./homeassistant-supervised.deb
 reboot
 ```
 - Enable waveshare display backlight and long touch: https://www.waveshare.com/wiki/7HP-CAPQLED
+- Configure HomeAssistant via `https://[server_ip]:8123`
 
 # Truma LIN and MQTT
 - My Truma CP plus version is 03.00.01
