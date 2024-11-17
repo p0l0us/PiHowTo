@@ -1,5 +1,14 @@
 # RaspberryPI OS installation
 - Install standard RaspberryOS 32bit using the RaspberryPI Imager
+- Re-enter the ssd card into reader and edit config.txt file according to Waveshare instructions https://www.waveshare.com/wiki/7HP-CAPQLED
+  Basically, add following lines to the end `[All]` section
+```
+hdmi_force_hotplug=1 
+config_hdmi_boost=10
+hdmi_group=2 
+hdmi_mode=87 
+hdmi_cvt 1024 600 60 6 0 0 0
+```
 - Installed wireguard and syncthing according to OrangePI guide https://github.com/p0l0us/PiHowTo/blob/main/OrangePI-Zero-Syncthing.md
 - `apt update && apt upgrade`
 - Truma CP plus version is 03.00.01
@@ -23,7 +32,7 @@ wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervise
 # in case following line doesn't work, try: BYPASS_OS_CHECK=true apt install ./homeassistant-supervised.deb
 apt install ./homeassistant-supervised.deb
 ```
-- Enable waveshare display https://www.waveshare.com/wiki/7HP-CAPQLED
+- Enable waveshare display backlight and long touch: https://www.waveshare.com/wiki/7HP-CAPQLED
 
 # Truma LIN and MQTT
 - STAUS: I'm able to connect via MQTT broker and control the temperature. \
