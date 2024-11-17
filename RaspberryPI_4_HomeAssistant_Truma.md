@@ -13,7 +13,10 @@ hdmi_mode=87
 hdmi_cvt 1024 600 60 6 0 0 0
 ```
 - Boot RaspberryPi from SD card
-- Run `apt update && apt upgrade`
+- Update the system
+```
+apt update && apt upgrade -y
+```
 - Finish Waveshare installation via ssh
 ```
 wget https://files.waveshare.com/upload/0/01/Raspios-bookworm-7HP-Backlight.zip
