@@ -23,6 +23,7 @@ wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervise
 # in case following line doesn't work, try: BYPASS_OS_CHECK=true apt install ./homeassistant-supervised.deb
 apt install ./homeassistant-supervised.deb
 ```
+- Enable waveshare display https://www.waveshare.com/wiki/7HP-CAPQLED
 
 # Truma LIN and MQTT
 - STAUS: I'm able to connect via MQTT broker and control the temperature. \
