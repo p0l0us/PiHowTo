@@ -1,8 +1,9 @@
 # RaspberryPI OS installation
 - Install standard RaspberryOS 32bit using the RaspberryPI Imager
+- _Note: Do not pre-configure authorized_keys in the RPI Imager. Do it later manually._
 - Waveshare touchscreen
   - Follow Waveshare instructions https://www.waveshare.com/wiki/7HP-CAPQLED
-    _NOTE: connect the display with HDMI and correct USB in order to make touch screen working_
+  - _Note: connect the display with HDMI and correct USB in order to make touch screen working_
   - Re-insert SD card to the computer and add following lines to the end `[All]` section within `config.txt`
 ```
 hdmi_force_hotplug=1 
@@ -22,6 +23,15 @@ cd 32
 sudo chmod +x 7H_Backlight
 ```
 - Installed wireguard and syncthing according to OrangePI guide https://github.com/p0l0us/PiHowTo/blob/main/OrangePI-Zero-Syncthing.md
+- In order to enable autorized_keys edit `/etc/ssh/sshd_config`
+```
+PubkeyAuthentication yes
+PubkeyAcceptedAlgorithms +ssh-rsa
+AuthorizedKeysFile      .ssh/authorized_keys .ssh/authorized_keys2
+
+# optionally disable password once keys works:
+# PasswordAuthentication no
+```
 
 # Installing home assistant (supervised to RaspberryPI OS)
 - follow https://github.com/home-assistant/supervised-installer
