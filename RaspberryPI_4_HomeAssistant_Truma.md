@@ -1,5 +1,5 @@
 # RaspberryPI OS installation
-- standard way for RPI using the RaspberryPI Imager
+- Install standard RaspberryOS 32bit using the RaspberryPI Imager
 - Installed wireguard and syncthing according to OrangePI guide https://github.com/p0l0us/PiHowTo/blob/main/OrangePI-Zero-Syncthing.md
 - `apt update && apt upgrade`
 - Truma CP plus version is 03.00.01
