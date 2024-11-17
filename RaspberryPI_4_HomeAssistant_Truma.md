@@ -43,10 +43,10 @@ apt install apparmor cifs-utils curl dbus jq libglib2.0-bin lsb-release network-
 curl -fsSL get.docker.com | sh
 
 # 32Bit
-# wget -O os-agent.deb https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent_1.6.0_linux_armv7.deb
+wget -O os-agent.deb https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent_1.6.0_linux_armv7.deb
 
 # 64bit
-wget -O os-agent.deb https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent_1.6.0_linux_aarch64.deb
+# wget -O os-agent.deb https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent_1.6.0_linux_aarch64.deb
 
 dpkg -i os-agent.deb
 
