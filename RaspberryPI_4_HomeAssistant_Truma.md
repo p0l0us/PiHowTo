@@ -1,7 +1,9 @@
 # RaspberryPI OS installation
 - Install standard RaspberryOS 32bit using the RaspberryPI Imager
-- Re-enter the ssd card into reader and edit config.txt file according to Waveshare instructions https://www.waveshare.com/wiki/7HP-CAPQLED
-  Basically, add following lines to the end `[All]` section
+- Waveshare touchscreen
+  - Follow Waveshare instructions https://www.waveshare.com/wiki/7HP-CAPQLED
+    _NOTE: connect the display with HDMI and correct USB in order to make touch screen working_
+  - Re-insert SD card to the computer and add following lines to the end `[All]` section within `config.txt`
 ```
 hdmi_force_hotplug=1 
 config_hdmi_boost=10
@@ -9,8 +11,9 @@ hdmi_group=2
 hdmi_mode=87 
 hdmi_cvt 1024 600 60 6 0 0 0
 ```
-  _NOTE: connect the display with HDMI and correct USB in order to make touch screen working _
-- Boot RaspberryPi from SD card and finish Waveshare installation via ssh
+- Boot RaspberryPi from SD card
+- Run `apt update && apt upgrade`
+- Finish Waveshare installation via ssh
 ```
 wget https://files.waveshare.com/upload/0/01/Raspios-bookworm-7HP-Backlight.zip
 unzip Raspios-bookworm-7HP-Backlight.zip
@@ -19,8 +22,6 @@ cd 32
 sudo chmod +x 7H_Backlight
 ```
 - Installed wireguard and syncthing according to OrangePI guide https://github.com/p0l0us/PiHowTo/blob/main/OrangePI-Zero-Syncthing.md
-- `apt update && apt upgrade`
-
 
 # Installing home assistant (supervised to RaspberryPI OS)
 - follow https://github.com/home-assistant/supervised-installer
