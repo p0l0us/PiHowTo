@@ -52,8 +52,10 @@ dpkg -i os-agent.deb
 
 wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
 
-# in case following line doesn't work, try: BYPASS_OS_CHECK=true apt install ./homeassistant-supervised.deb
-apt install ./homeassistant-supervised.deb
+# Bookworm requires bypassing OS check
+BYPASS_OS_CHECK=true dpkg -i ./homeassistant-supervised.deb
+
+
 ```
 - Enable waveshare display backlight and long touch: https://www.waveshare.com/wiki/7HP-CAPQLED
 
