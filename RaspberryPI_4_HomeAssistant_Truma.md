@@ -9,9 +9,18 @@ hdmi_group=2
 hdmi_mode=87 
 hdmi_cvt 1024 600 60 6 0 0 0
 ```
+  _NOTE: connect the display with HDMI and correct USB in order to make touch screen working _
+- Boot RaspberryPi from SD card and finish Waveshare installation via ssh
+```
+wget https://files.waveshare.com/upload/0/01/Raspios-bookworm-7HP-Backlight.zip
+unzip Raspios-bookworm-7HP-Backlight.zip
+cd 32
+#cd 64
+sudo chmod +x 7H_Backlight
+```
 - Installed wireguard and syncthing according to OrangePI guide https://github.com/p0l0us/PiHowTo/blob/main/OrangePI-Zero-Syncthing.md
 - `apt update && apt upgrade`
-- Truma CP plus version is 03.00.01
+
 
 # Installing home assistant (supervised to RaspberryPI OS)
 - follow https://github.com/home-assistant/supervised-installer
@@ -35,6 +44,7 @@ apt install ./homeassistant-supervised.deb
 - Enable waveshare display backlight and long touch: https://www.waveshare.com/wiki/7HP-CAPQLED
 
 # Truma LIN and MQTT
+- My Truma CP plus version is 03.00.01
 - STAUS: I'm able to connect via MQTT broker and control the temperature. \
   But I didn't connect MQTT to Home assistant.
 - Connect hardware as shown here: https://github.com/danielfett/inetbox.py/tree/master
