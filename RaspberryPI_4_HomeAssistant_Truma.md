@@ -9,10 +9,19 @@
 ```
 apt install apparmor cifs-utils curl dbus jq libglib2.0-bin lsb-release network-manager nfs-common systemd-journal-remote systemd-resolved udisks2 wget -y
 curl -fsSL get.docker.com | sh
-wget https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent_1.6.0_linux_armv7.deb
-dpkg -i os-agent_1.0.0_linux_x86_64.deb
+
+# 32Bit
+# wget -O os-agent.deb https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent_1.6.0_linux_armv7.deb
+
+# 64bit
+wget -O os-agent.deb https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent_1.6.0_linux_aarch64.deb
+
+dpkg -i os-agent.deb
+
 wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
-BYPASS_OS_CHECK=true apt install ./homeassistant-supervised.deb
+
+# in case following line doesn't work, try: BYPASS_OS_CHECK=true apt install ./homeassistant-supervised.deb
+apt install ./homeassistant-supervised.deb
 ```
 
 # Truma LIN and MQTT
