@@ -55,7 +55,7 @@ wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervise
 # Bookworm requires bypassing OS check
 BYPASS_OS_CHECK=true dpkg -i ./homeassistant-supervised.deb
 
-
+reboot
 ```
 - Enable waveshare display backlight and long touch: https://www.waveshare.com/wiki/7HP-CAPQLED
 
